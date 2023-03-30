@@ -6,6 +6,8 @@ import Link from 'next/link'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const image = "<Image src='https://media.istockphoto.com/id/1071467916/photo/group-of-young-students-working-on-an-assignment.jpg?s=612x612&w=0&k=20&c=LI91Y0Ygig3j6tKJQEWyCEd_yWXzTfPYXfWzx_3-VN4='/>"
   return (
     <>
       <Head>
@@ -18,7 +20,6 @@ export default function Home() {
         <div className={styles.containerMain}>
           <h1>Encontre o melhor bootcamp para você</h1>
           <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
-          <p>Confira detalhes sobre os cursos e comece a estudar em 2023.</p>
           <div className={styles.grid}>
             <div className={styles.card}>
                 <Link href="/schools">
@@ -40,17 +41,9 @@ export default function Home() {
                 </p>
               </Link>
             </div>
-            <div className={styles.card}>
-                <Link href="/technologies">
-                <h2 className={inter.className}>
-                  Tecnologias&nbsp;<span>-&gt;</span>
-                </h2>
-                <p className={inter.className}>
-                  Descubra onde você pode aprender determinada tecnologia.
-                </p>
-              </Link>
-            </div>
           </div>
+          <h2>Qual tecnologia mais te atrai?</h2>
+          <p>React icons</p>
           <div className={styles.grid}>
             <div className={styles.card}>
               <h2>Receba o contato das escolas</h2>
