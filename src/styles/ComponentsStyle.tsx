@@ -1,4 +1,4 @@
-import { darkTheme } from "@/assets/constants";
+import { color1, darkTheme, titleFont } from "@/assets/constants";
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
@@ -9,7 +9,8 @@ export const MainContainer = styled.div`
     padding: 6rem;
     min-height: 100vh;
     width: 100vw;
-    background-color: ${darkTheme};
+    background-color: ${color1};
+    font-family: ${titleFont}
 `;
 
 export const Grid = styled.div`
