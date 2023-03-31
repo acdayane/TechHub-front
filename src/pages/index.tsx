@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
+import { Comfortaa } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
 
-const inter = Inter({ subsets: ['latin'] })
+const font = Comfortaa({ subsets: ['latin'] })
 
 export default function Home() {
 
@@ -18,42 +18,42 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.containerMain}>
-          <h1 className={inter.className}>Encontre o melhor bootcamp para você</h1>
-          <p className={inter.className}>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
+          <h1 className={font.className}>Encontre o melhor bootcamp para você</h1>
+          <p className={font.className}>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
           <div className={styles.grid}>
             <div className={styles.card}>
                 <Link href="/schools">
-                <h2 className={inter.className}>
+                <h2 className={font.className}>
                   Escolas <span>-&gt;</span>
                 </h2>
-                <p className={inter.className}>
+                <p className={font.className}>
                   Encontre instituições que oferecem cursos de tecnologia.
                 </p>
               </Link>
             </div>
             <div className={styles.card}>
               <Link href="/courses">
-                <h2 className={inter.className}>
+                <h2 className={font.className}>
                   Cursos <span>-&gt;</span>
                 </h2>
-                <p className={inter.className}>
+                <p className={font.className}>
                   Veja detalhes e avaliações sobre os cursos.
                 </p>
               </Link>
             </div>
           </div>
-          <h3 className={inter.className}>Qual tecnologia mais te atrai?</h3>
+          <h3 className={font.className}>Qual tecnologia mais te atrai?</h3>
           <p>PEGAR IMAGENS DO DB</p>
           <div className={styles.grid}>
             <div className={styles.card}>
               <Link href="/soon">
-                <h2 className={inter.className}>
+                <h2 className={font.className}>
                   Receba o contato das escolas <span>-&gt;</span>
                 </h2>
               </Link>
             </div> 
             <div className={styles.card}>
-              <h2 className={inter.className}>
+              <h2 className={font.className}>
                 Avalie seu curso <span>-&gt;</span>
               </h2>
             </div>             

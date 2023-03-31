@@ -1,13 +1,14 @@
-import { useRouter } from "next/router"
+import { Comfortaa } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 
+const font = Comfortaa({ subsets: ['latin'] })
+
 export default function Soon() {
-    const router = useRouter();
 
     return (
         <div className={styles.main}>
             <div className={styles.containerMain}>
-                <h1>Em breve!</h1>
+                <h1 className={font.className}>Em breve!</h1>
             </div>            
         </div>
     )
