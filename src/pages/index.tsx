@@ -18,8 +18,8 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.containerMain}>
-          <h1>Encontre o melhor bootcamp para você</h1>
-          <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
+          <h1 className={inter.className}>Encontre o melhor bootcamp para você</h1>
+          <p className={inter.className}>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
           <div className={styles.grid}>
             <div className={styles.card}>
                 <Link href="/schools">
@@ -32,7 +32,7 @@ export default function Home() {
               </Link>
             </div>
             <div className={styles.card}>
-                <Link href="/courses">
+              <Link href="/courses">
                 <h2 className={inter.className}>
                   Cursos <span>-&gt;</span>
                 </h2>
@@ -42,17 +42,25 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <h2>Qual tecnologia mais te atrai?</h2>
-          <p>React icons</p>
+          <h3 className={inter.className}>Qual tecnologia mais te atrai?</h3>
+          <p>PEGAR IMAGENS DO DB</p>
           <div className={styles.grid}>
             <div className={styles.card}>
-              <h2>Receba o contato das escolas</h2>
+              <Link href="/soon">
+                <h2 className={inter.className}>
+                  Receba o contato das escolas <span>-&gt;</span>
+                </h2>
+              </Link>
             </div> 
             <div className={styles.card}>
-              <h2>Avalie seu curso</h2>
+              <h2 className={inter.className}>
+                Avalie seu curso <span>-&gt;</span>
+              </h2>
             </div>             
-          </div>          
+          </div>    
         </div>
+        <p className={styles.code}>Dúvidas, sugestões ou atualizações? <Link href="https://www.linkedin.com/in/acdayane/">Contate-nos!</Link></p>
+        <p className={styles.code}>Feito com ❤. Dayane Piccoli ©2023.</p>    
       </main>
     </>
   )

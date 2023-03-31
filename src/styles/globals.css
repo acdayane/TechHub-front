@@ -55,10 +55,14 @@ table {
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
-    #16abff33 0deg,
+    /* #16abff33 0deg,
     #0885ff33 55deg,
     #54d6ff33 120deg,
-    #0071ff33 160deg,
+    #0071ff33 160deg, */
+    #00FFC6 0deg,
+    #30AADD 55deg,
+    #43919B 120deg,
+    #247881 160deg,
     transparent 360deg
   );
   --secondary-glow: radial-gradient(
