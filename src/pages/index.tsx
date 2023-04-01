@@ -17,14 +17,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.containerMain}>
-          <h1 className={font.className}>Encontre o melhor bootcamp para você</h1>
+        <div className={styles.container}>
+          <h1 className={font.className}>Encontre a melhor escola de programação para você</h1>
           <p className={font.className}>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
           <div className={styles.grid}>
             <div className={styles.card}>
                 <Link href="/schools">
                 <h2 className={font.className}>
-                  Escolas <span>-&gt;</span>
+                  Escolas <span>=&gt;</span>
                 </h2>
                 <p className={font.className}>
                   Encontre instituições que oferecem cursos de tecnologia.
@@ -34,31 +34,27 @@ export default function Home() {
             <div className={styles.card}>
               <Link href="/courses">
                 <h2 className={font.className}>
-                  Cursos <span>-&gt;</span>
+                  Cursos <span>=&gt;</span>
                 </h2>
                 <p className={font.className}>
                   Veja detalhes e avaliações sobre os cursos.
                 </p>
               </Link>
             </div>
-          </div>
-          <h3 className={font.className}>Qual tecnologia mais te atrai?</h3>
-          <p>PEGAR IMAGENS DO DB</p>
-          <div className={styles.grid}>
             <div className={styles.card}>
-              <Link href="/soon">
+              <Link href="/login">
                 <h2 className={font.className}>
-                  Receba o contato das escolas <span>-&gt;</span>
+                  Comunidade <span>=&gt;</span>
                 </h2>
+                <p className={font.className}>
+                  Interaja com outros estudantes de tecnologia.
+                </p>
               </Link>
-            </div> 
-            <div className={styles.card}>
-              <h2 className={font.className}>
-                Avalie seu curso <span>-&gt;</span>
-              </h2>
-            </div>             
-          </div>    
-        </div>
+            </div>
+          </div>
+          <h2 className={font.className}>Qual tecnologia mais te atrai?</h2>
+          <p>PEGAR IMAGENS DO DB</p>    
+        </div>    
         <p className={styles.code}>Dúvidas, sugestões ou atualizações? <Link href="https://www.linkedin.com/in/acdayane/">Contate-nos!</Link></p>
         <p className={styles.code}>Feito com ❤. Dayane Piccoli ©2023.</p>    
       </main>

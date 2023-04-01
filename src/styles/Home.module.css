@@ -6,7 +6,7 @@
   width: 100vw;
 }
 
-.containerMain {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,16 +18,16 @@
   margin-top: 170px;
   margin-bottom: 40px;
 }
-.containerMain h1 {
-  font-size: 40px;
+.container h1 {
+  font-size: 2.5rem;
   font-weight: 600;
 }
-.containerMain h3 {
-  font-size: 28px;
+.container h2 {
+  font-size: 2rem;
   font-weight: 600;
 }
-.containerMain p {
-  font-size: 16px;
+.container p {
+  font-size: 1.1rem;
   opacity: 0.8;
   line-height: 1.4;
   word-wrap: break-word;
@@ -42,15 +42,33 @@
   left: 0px;
 }
 
+.title {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.picture {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--border-radius);
+  background-color: blue;
+  position: relative;
+  left: -10px;
+  top: -35px;
+}
+
 .code {
-  font-weight: 700;
   font-family: var(--font-mono);
   margin-bottom: 0.5rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(50%, auto));
+  grid-template-columns: repeat(3, minmax(33%, auto));
   width: 70vw;
   max-width: var(--max-width);
 }
@@ -73,14 +91,51 @@
   margin-bottom: 0.7rem;
 }
 
+.content {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  min-height: 80px;
+  padding: 1rem 2rem;
+  margin-top: 50px;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0);
+  transition: background 200ms, border 200ms;
+}
+.content span {
+  display: inline-block;
+  transition: transform 200ms;
+}
+.content h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin: 5px;
+  line-height: 1.4;
+}
+.content h3 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+}
+.content p {
+  font-size: 1rem;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
+    cursor: pointer;
   }
   .card:hover span {
     transform: translateX(4px);
+  }
+  .content:hover{
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+    cursor: pointer;
   }
 }
 
@@ -92,33 +147,36 @@
     text-align: center;
     margin-bottom: 15px;
   }
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
   .code {
     text-align: center;
     margin-bottom: 0.7rem;
     font-size: 10px;
   }
-  .containerMain {
+  .container {
     width: 100%;
     padding: 12px;
   }
-  .containerMain h1 {
-    font-size: 30px;
+  .container h1 {
+    font-size: 2rem;
     margin-bottom: 15px;
   }
-  .containerMain h3 {
-    font-size: 25px;
+  .container h2 {
+    font-size: 1.5rem;
     margin-bottom: 15px;
   }
-  .containerMain p {
+  .container p {
     margin-bottom: 15px;
+  }
+  .content {
+    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+    margin: 6px;
+    width: 100vw;
   }
   .picture {
+    width: 40%;
     position: relative;
-    left: 10px;
-    top: 10px;
+    left: 30%;
+    top: -5px;
   }
 }
 
@@ -126,14 +184,5 @@
 @media (min-width: 701px) and (max-width: 1120px) {
   .main {
     text-align: center;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
   }
 }

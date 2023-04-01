@@ -1,4 +1,4 @@
-export default function Schools() {
+export default function Login() {
 
     return (
         <div>login</div>
