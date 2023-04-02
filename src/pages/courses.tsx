@@ -2,10 +2,37 @@ import Head from 'next/head'
 import { Comfortaa } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
+import React, { useEffect } from 'react'
+import { getCourses, getCourseById } from './api/req.courses'
 
 const font = Comfortaa({ subsets: ['latin'] })
 
 export default function Courses() {
+
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            const imagesList = await getCourses();
+            console.log(imagesList)
+          } catch(err) {
+            console.log(err)
+          }   
+        }
+        fetchData()
+      }, []);
+    
+      useEffect(() => {
+        async function fetchData() {
+          try {
+            const imagesList = await getCourseById();
+            console.log(imagesList)
+          } catch(err) {
+            console.log(err)
+          }   
+        }
+        fetchData()
+      }, []);
+
     return (
         <div className={styles.main}>
             <div className={styles.container}>

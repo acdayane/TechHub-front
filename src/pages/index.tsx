@@ -1,13 +1,37 @@
-import Head from 'next/head'
-import { Comfortaa } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { Comfortaa } from 'next/font/google'
+import Head from 'next/head'
 import Link from 'next/link'
+import React, { useEffect } from 'react'
+import { getTechnologies, getTechnologyById } from './api/req.technologies'
 
 const font = Comfortaa({ subsets: ['latin'] })
 
 export default function Home() {
-
   const image = "<Image src='https://media.istockphoto.com/id/1071467916/photo/group-of-young-students-working-on-an-assignment.jpg?s=612x612&w=0&k=20&c=LI91Y0Ygig3j6tKJQEWyCEd_yWXzTfPYXfWzx_3-VN4='/>"
+   
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const imagesList = await getTechnologies();
+        console.log(imagesList)
+      } catch(err) {
+        console.log(err)
+      }   
+    }
+    fetchData()
+    fetchTechnologyById(1) //levar p/ onclick
+  }, []);
+
+async function fetchTechnologyById(id: number) {
+  try {
+    const imagesList = await getTechnologyById(id);
+    console.log(imagesList)
+  } catch(err) {
+    console.log(err)
+  }   
+};
+
   return (
     <>
       <Head>
@@ -53,6 +77,7 @@ export default function Home() {
             </div>
           </div>
           <h2 className={font.className}>Qual tecnologia mais te atrai?</h2>
+          <p className={font.className}>Descubra onde aprender.</p>
           <p>PEGAR IMAGENS DO DB</p>    
         </div>    
         <p className={styles.code}>Dúvidas, sugestões ou atualizações? <Link href="https://www.linkedin.com/in/acdayane/">Contate-nos!</Link></p>
