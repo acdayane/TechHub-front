@@ -2,35 +2,35 @@ import styles from '@/styles/Home.module.css'
 import { Comfortaa } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
-import { getTechnologies, getTechnologyById } from './api/req.technologies'
+import React, { useEffect, useState } from 'react'
+import { getTechnologies, getTechnologyById } from './api/technologies.api'
+import { Technology } from '@/types/index.types'
 
 const font = Comfortaa({ subsets: ['latin'] })
 
 export default function Home() {
   const image = "<Image src='https://media.istockphoto.com/id/1071467916/photo/group-of-young-students-working-on-an-assignment.jpg?s=612x612&w=0&k=20&c=LI91Y0Ygig3j6tKJQEWyCEd_yWXzTfPYXfWzx_3-VN4='/>"
    
+  const [techList, setTechList] = useState<Technology[] | null>(null);
+  
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const imagesList = await getTechnologies();
-        console.log(imagesList)
-      } catch(err) {
-        console.log(err)
-      }   
-    }
-    fetchData()
-    fetchTechnologyById(1) //levar p/ onclick
+    getTechnologies()
+      .then((res) => setTechList(res))
+      .catch((err) => console.log(err))
   }, []);
+  console.log(techList)
 
-async function fetchTechnologyById(id: number) {
-  try {
-    const imagesList = await getTechnologyById(id);
-    console.log(imagesList)
-  } catch(err) {
-    console.log(err)
-  }   
-};
+
+  async function fetchTechnologyById(id: number) {
+    try {
+      const imagesList = await getTechnologyById(id);
+      console.log(imagesList)
+    } catch(err) {
+      console.log(err)
+    }   
+  };
+
+  if (techList === null) return;
 
   return (
     <>
@@ -78,7 +78,9 @@ async function fetchTechnologyById(id: number) {
           </div>
           <h2 className={font.className}>Qual tecnologia mais te atrai?</h2>
           <p className={font.className}>Descubra onde aprender.</p>
-          <p>PEGAR IMAGENS DO DB</p>    
+          {techList.map((t) => 
+            <p key={t.id} onClick={() => fetchTechnologyById(1)}>{t.name}</p>
+          )}
         </div>    
         <p className={styles.code}>Dúvidas, sugestões ou atualizações? <Link href="https://www.linkedin.com/in/acdayane/">Contate-nos!</Link></p>
         <p className={styles.code}>Feito com ❤. Dayane Piccoli ©2023.</p>    

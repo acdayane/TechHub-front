@@ -2,36 +2,28 @@ import Head from 'next/head'
 import { Comfortaa } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
-import { getCourses, getCourseById } from './api/req.courses'
+import React, { useEffect, useState } from 'react'
+import { getCourses, getCourseById } from './api/courses.api'
+import { Course } from '@/types/index.types'
 
 const font = Comfortaa({ subsets: ['latin'] })
 
 export default function Courses() {
+    const [coursesList, setCoursesList] = useState<Course[] | null>(null);
 
     useEffect(() => {
-        async function fetchData() {
-          try {
-            const imagesList = await getCourses();
-            console.log(imagesList)
-          } catch(err) {
-            console.log(err)
-          }   
-        }
-        fetchData()
-      }, []);
-    
-      useEffect(() => {
-        async function fetchData() {
-          try {
-            const imagesList = await getCourseById();
-            console.log(imagesList)
-          } catch(err) {
-            console.log(err)
-          }   
-        }
-        fetchData()
-      }, []);
+      getCourses()
+        .then((res) => setCoursesList(res))
+        .catch((err) => console.log(err))
+    }, []);
+
+    useEffect(() => {
+      getCourseById()
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
+    }, []);
+
+       if (coursesList === null) return <div className={styles.container}><p>Loading...</p></div>;
 
     return (
         <div className={styles.main}>
@@ -40,23 +32,24 @@ export default function Courses() {
                     <h1 className={font.className}>Cursos</h1>
                     <h1 className={font.className}>Menu</h1>
                 </div>
-                <div className={styles.content}>
-                    <div className={styles.picture}/>
-                    <h2 className={font.className}>Nome da Escola <span>=&gt;</span></h2>
-                    <h3 className={font.className}>Aprenda:</h3>    
-                </div>
-                <div className={styles.content}>
-                    <div className={styles.picture}/>
-                    <h2 className={font.className}>Nome da Escola <span>=&gt;</span></h2>
-                    <h3 className={font.className}>Aprenda:</h3>    
-                </div>
-                <div className={styles.content}>
-                    <div className={styles.picture}/>
-                    <h2 className={font.className}>Nome da Escola <span>=&gt;</span></h2>
-                    <h3 className={font.className}>Aprenda:</h3>                      
-                </div>
-         
-            </div>            
+                {coursesList.map((c) =>
+                    <div key={c.id} className={styles.content}>
+                        <Link href="www.google.com">
+                        <div className={styles.picture}/>
+                        <h2>{c.nameId}<span>=&gt;</span></h2>
+                        <p>{c.description}</p>
+                        <p>Carga horária: {c.durationInHours}h</p>
+                        <p>Duração: {c.durationInMonths} meses</p>
+                        <p>R$: {c.minTuitionFee}-{c.maxTuitionFee} *</p>
+                        <p>Tem MSC? {c.msc === true? "Sim" : "Não"} **</p>
+                        </Link>
+                    </div>
+                )}         
+            <p className={styles.code}>* O menor valor corresponde ao valor do curso à vista mencionado no site da escola. O maior valor está sujeito a taxas de financiamento. Atente-se às condições contratuais.</p>        
+            <p className={styles.code}>** Modelo de Sucesso Compartilhado: O aluno só paga a partir de determinada renda mínima. Verifique regras, valores e acréscimos diretamente com a escola. </p>  
+            <p className={styles.code}>Informações coletadas em março de 2023.</p>  
+            </div>       
+
         </div>
         // <Link href='/courses/[id]' as={'/courses/' + value[0]}>
         //       <a>{value[1].title}</a>
