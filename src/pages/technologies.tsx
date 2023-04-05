@@ -7,12 +7,6 @@ const font = Comfortaa({ subsets: ['latin'] })
 
 export default function Technologies() {
  
-  useEffect(() => {
-    getSchools()
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err))
-  }, []);
-
     return (
         <div className={styles.main}>
             <div className={styles.container}>

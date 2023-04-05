@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/legacy/image'
 import { Comfortaa } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
@@ -17,13 +18,13 @@ export default function Courses() {
         .catch((err) => console.log(err))
     }, []);
 
-    useEffect(() => {
-      getCourseById()
+    async function fetchCourseById(id: number) {
+        getCourseById(id)
         .then((res) => console.log(res))
         .catch((err) => console.log(err))
-    }, []);
+    };
 
-       if (coursesList === null) return <div className={styles.container}><p>Loading...</p></div>;
+    if (coursesList === null) return <div className={styles.container}><p>Loading...</p></div>;
 
     return (
         <div className={styles.main}>
@@ -33,10 +34,18 @@ export default function Courses() {
                     <h1 className={font.className}>Menu</h1>
                 </div>
                 {coursesList.map((c) =>
-                    <div key={c.id} className={styles.content}>
+                    <div key={c.id} className={styles.content} onClick={() => fetchCourseById(Number())}>
                         <Link href="www.google.com">
+                        <Image
+                            unoptimized
+                            src={c.Schools.image}
+                            alt="Students"
+                            width={100}
+                            height={100}
+                            priority
+                        />
                         <div className={styles.picture}/>
-                        <h2>{c.nameId}<span>=&gt;</span></h2>
+                        <h2>{c.Names.name}<span>&#8594;</span></h2>
                         <p>{c.description}</p>
                         <p>Carga horária: {c.durationInHours}h</p>
                         <p>Duração: {c.durationInMonths} meses</p>

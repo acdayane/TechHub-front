@@ -1,13 +1,11 @@
 import axios from 'axios'
 
 export async function getCourses() {
-    console.log(process.env.API_URL);
-    const result = await axios.get(`http://localhost:4000/courses`);
+    const result = await axios.get(`${process.env.API_URL}/courses`);
     return result.data;
 }
 
-export async function getCourseById() {
-    console.log(process.env.API_URL);
-    const result = await axios.get(`http://localhost:4000/courses/1`);
+export async function getCourseById(id: number) {
+    const result = await axios.get(`${process.env.API_URL}/courses/1`);
     return result.data;
 }

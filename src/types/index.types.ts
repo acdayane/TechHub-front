@@ -17,7 +17,8 @@ export type Course = {
     msc: boolean,
     createdAt: string,
     updatedAt: string,
-    Schools: School[]
+    Schools: School,
+    Name: Name
 }
 
 export type School = {
@@ -28,4 +29,9 @@ export type School = {
     createdAt: string,
     updatedAt: string,
     Courses: Course[]
+}
+
+export type Name = {
+    id: number,
+    name: string
 }

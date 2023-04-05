@@ -2,6 +2,7 @@ import styles from '@/styles/Home.module.css'
 import { Comfortaa } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/legacy/image'
 import React, { useEffect, useState } from 'react'
 import { getTechnologies, getTechnologyById } from './api/technologies.api'
 import { Technology } from '@/types/index.types'
@@ -9,8 +10,6 @@ import { Technology } from '@/types/index.types'
 const font = Comfortaa({ subsets: ['latin'] })
 
 export default function Home() {
-  const image = "<Image src='https://media.istockphoto.com/id/1071467916/photo/group-of-young-students-working-on-an-assignment.jpg?s=612x612&w=0&k=20&c=LI91Y0Ygig3j6tKJQEWyCEd_yWXzTfPYXfWzx_3-VN4='/>"
-   
   const [techList, setTechList] = useState<Technology[] | null>(null);
   
   useEffect(() => {
@@ -22,12 +21,9 @@ export default function Home() {
 
 
   async function fetchTechnologyById(id: number) {
-    try {
-      const imagesList = await getTechnologyById(id);
-      console.log(imagesList)
-    } catch(err) {
-      console.log(err)
-    }   
+    getTechnologyById(id)
+    .then((res) => setTechList(res))
+    .catch((err) => console.log(err))
   };
 
   if (techList === null) return;
@@ -42,13 +38,23 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.container}>
+
+          <Image
+            unoptimized
+            src={'https://media.istockphoto.com/id/1071467916/photo/group-of-young-students-working-on-an-assignment.jpg?s=612x612&w=0&k=20&c=LI91Y0Ygig3j6tKJQEWyCEd_yWXzTfPYXfWzx_3-VN4='}
+            alt="Students"
+            layout="fill"
+            objectFit="contain"
+            priority
+          />
+          
           <h1 className={font.className}>Encontre a melhor escola de programação para você</h1>
           <p className={font.className}>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
           <div className={styles.grid}>
             <div className={styles.card}>
                 <Link href="/schools">
                 <h2 className={font.className}>
-                  Escolas <span>=&gt;</span>
+                  Escolas <span>&#8594;</span>
                 </h2>
                 <p className={font.className}>
                   Encontre instituições que oferecem cursos de tecnologia.
@@ -58,7 +64,7 @@ export default function Home() {
             <div className={styles.card}>
               <Link href="/courses">
                 <h2 className={font.className}>
-                  Cursos <span>=&gt;</span>
+                  Cursos <span>&#8594;</span>
                 </h2>
                 <p className={font.className}>
                   Veja detalhes e avaliações sobre os cursos.
@@ -68,7 +74,7 @@ export default function Home() {
             <div className={styles.card}>
               <Link href="/login">
                 <h2 className={font.className}>
-                  Comunidade <span>=&gt;</span>
+                  Comunidade <span>&#8594;</span>
                 </h2>
                 <p className={font.className}>
                   Interaja com outros estudantes de tecnologia.
@@ -79,7 +85,14 @@ export default function Home() {
           <h2 className={font.className}>Qual tecnologia mais te atrai?</h2>
           <p className={font.className}>Descubra onde aprender.</p>
           {techList.map((t) => 
-            <p key={t.id} onClick={() => fetchTechnologyById(1)}>{t.name}</p>
+              <Image key={t.id} onClick={() => fetchTechnologyById(1)}
+                unoptimized
+                src={t.image}
+                alt="Students"
+                width={100}
+                height={100}
+                priority
+              />
           )}
         </div>    
         <p className={styles.code}>Dúvidas, sugestões ou atualizações? <Link href="https://www.linkedin.com/in/acdayane/">Contate-nos!</Link></p>
