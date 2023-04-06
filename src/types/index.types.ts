@@ -1,7 +1,12 @@
+import { type } from "os"
+
 export type Technology = {
     id: number,
     name: string,
-    image: string
+    image: string,
+    Technologies: {
+        name: string
+    }
 }
 
 export type Course = {
@@ -18,7 +23,9 @@ export type Course = {
     createdAt: string,
     updatedAt: string,
     Schools: School,
-    Name: Name
+    Names: Name,
+    Types: Type,
+    TechCourses: Technology[]
 }
 
 export type School = {
@@ -34,4 +41,15 @@ export type School = {
 export type Name = {
     id: number,
     name: string
+}
+
+export type Type = {
+    id: number,
+    name: string
+}
+
+export type TypeCourse = {
+    id: number,
+    courseId?: Course[],
+    technologyId?: Technology[]
 }

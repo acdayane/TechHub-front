@@ -6,6 +6,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { getCourses, getCourseById } from './api/courses.api'
 import { Course } from '@/types/index.types'
+import { FaSearchPlus } from "react-icons/fa";
 
 const font = Comfortaa({ subsets: ['latin'] })
 
@@ -17,6 +18,7 @@ export default function Courses() {
         .then((res) => setCoursesList(res))
         .catch((err) => console.log(err))
     }, []);
+    console.log(coursesList)
 
     async function fetchCourseById(id: number) {
         getCourseById(id)
@@ -35,23 +37,33 @@ export default function Courses() {
                 </div>
                 {coursesList.map((c) =>
                     <div key={c.id} className={styles.content} onClick={() => fetchCourseById(Number())}>
-                        <Link href="www.google.com">
-                        <Image
-                            unoptimized
-                            src={c.Schools.image}
-                            alt="Students"
-                            width={100}
-                            height={100}
-                            priority
-                        />
-                        <div className={styles.picture}/>
-                        <h2>{c.Names.name}<span>&#8594;</span></h2>
+                    
+                        <Link href={c.Schools.website} rel="noopener noreferrer" target="_blank">                   
+                            <Image
+                                className={styles.picture}
+                                unoptimized
+                                src={c.Schools.image}
+                                alt="School"
+                                width={100}
+                                height={100}
+                                priority
+                            /> 
+                        </Link> 
+                        <h3>{c.Schools.name}</h3>                    
+                        <h2>{c.Names.name} <span>&#8594;</span></h2>
+                        <p>{c.Types.name}</p>
                         <p>{c.description}</p>
+                        <span>Aprenda:</span>
+                        {c.TechCourses.map((t) =>
+                            <span key={t.id}>&nbsp; {t.Technologies.name}, </span>
+                        )}
+                        <span>&nbsp; etc.</span>
                         <p>Carga horária: {c.durationInHours}h</p>
                         <p>Duração: {c.durationInMonths} meses</p>
                         <p>R$: {c.minTuitionFee}-{c.maxTuitionFee} *</p>
-                        <p>Tem MSC? {c.msc === true? "Sim" : "Não"} **</p>
-                        </Link>
+                        <p>MSC: {c.msc === true? "Sim" : "Não"} **</p>
+                        <FaSearchPlus/>
+            
                     </div>
                 )}         
             <p className={styles.code}>* O menor valor corresponde ao valor do curso à vista mencionado no site da escola. O maior valor está sujeito a taxas de financiamento. Atente-se às condições contratuais.</p>        

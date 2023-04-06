@@ -1,5 +1,5 @@
 import styles from '@/styles/Home.module.css'
-import { School } from '@/types/index.types'
+import { Course, School } from '@/types/index.types'
 import { Comfortaa } from 'next/font/google'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -37,18 +37,18 @@ export default function Schools() {
                 {schoolsList.map((s) =>
                     <div key={s.id} className={styles.content}>
                         <Link href={s.website} rel="noopener noreferrer" target="_blank">
-                        <div className={styles.picture}>
-                         <Image
+                        <Image
+                            className={styles.picture}
                             unoptimized
                             src={s.image}
-                            alt="Students"
+                            alt="School"
                             width={100}
                             height={100}
                             priority
-                        />
-                        </div>
+                        />                       
                         <h2>{s.name} <span>&#8594;</span></h2>
-                        <h3 onClick={() => fetchCourseById(1)}>Aprenda: {s.Courses.map((c)=>c.nameId)}</h3>
+                        <h4>Estude:</h4>
+                        <h4 onClick={() => fetchCourseById(1)}>{s.Courses[0].Names.name} | {s.Courses[0].Types.name}</h4>
                         </Link>
                     </div>
                 )}   

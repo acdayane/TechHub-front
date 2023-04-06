@@ -17,8 +17,6 @@ export default function Home() {
       .then((res) => setTechList(res))
       .catch((err) => console.log(err))
   }, []);
-  console.log(techList)
-
 
   async function fetchTechnologyById(id: number) {
     getTechnologyById(id)
@@ -88,7 +86,7 @@ export default function Home() {
               <Image key={t.id} onClick={() => fetchTechnologyById(1)}
                 unoptimized
                 src={t.image}
-                alt="Students"
+                alt="Technology"
                 width={100}
                 height={100}
                 priority
