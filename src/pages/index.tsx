@@ -6,6 +6,8 @@ import Image from 'next/legacy/image'
 import React, { useEffect, useState } from 'react'
 import { getTechnologies, getTechnologyById } from './api/technologies.api'
 import { Technology } from '@/types/index.types'
+import student from '../assets/student-unsplash.jpg'
+import CarouselImages from '@/components/Carousel'
 
 const font = Comfortaa({ subsets: ['latin'] })
 
@@ -36,65 +38,75 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.container}>
-
+          <CarouselImages/>
+          {/* <div >
           <Image
             unoptimized
-            src={'https://media.istockphoto.com/id/1071467916/photo/group-of-young-students-working-on-an-assignment.jpg?s=612x612&w=0&k=20&c=LI91Y0Ygig3j6tKJQEWyCEd_yWXzTfPYXfWzx_3-VN4='}
-            alt="Students"
+            src={student}
+            alt="student"
             layout="fill"
             objectFit="contain"
             priority
-          />
+            />
           
-          <h1 className={font.className}>Encontre a melhor escola de programação para você</h1>
-          <p className={font.className}>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
-          <div className={styles.grid}>
-            <div className={styles.card}>
-                <Link href="/schools">
-                <h2 className={font.className}>
-                  Escolas <span>&#8594;</span>
-                </h2>
-                <p className={font.className}>
-                  Encontre instituições que oferecem cursos de tecnologia.
-                </p>
-              </Link>
+          </div> */}
+          <div className={styles.box}>
+            <div className={styles.grid}>
+              <div className={styles.card}>
+                  <Link href="/schools">
+                  <h2 className={font.className}>
+                    Escolas <span>&#8594;</span>
+                  </h2>
+                  <p className={font.className}>
+                    Encontre instituições que oferecem cursos de tecnologia.
+                  </p>
+                </Link>
+              </div>
+              <div className={styles.card}>
+                <Link href="/courses">
+                  <h2 className={font.className}>
+                    Cursos <span>&#8594;</span>
+                  </h2>
+                  <p className={font.className}>
+                    Veja detalhes e avaliações sobre os cursos.
+                  </p>
+                </Link>
+              </div>
+              <div className={styles.card}>
+                <Link href="/login">
+                  <h2 className={font.className}>
+                    Comunidade <span>&#8594;</span>
+                  </h2>
+                  <p className={font.className}>
+                    Interaja com outros estudantes de tecnologia.
+                  </p>
+                </Link>
+              </div>
             </div>
-            <div className={styles.card}>
-              <Link href="/courses">
-                <h2 className={font.className}>
-                  Cursos <span>&#8594;</span>
-                </h2>
-                <p className={font.className}>
-                  Veja detalhes e avaliações sobre os cursos.
-                </p>
-              </Link>
-            </div>
-            <div className={styles.card}>
-              <Link href="/login">
-                <h2 className={font.className}>
-                  Comunidade <span>&#8594;</span>
-                </h2>
-                <p className={font.className}>
-                  Interaja com outros estudantes de tecnologia.
-                </p>
-              </Link>
-            </div>
-          </div>
-          <h2 className={font.className}>Qual tecnologia mais te atrai?</h2>
-          <p className={font.className}>Descubra onde aprender.</p>
-          {techList.map((t) => 
-              <Image key={t.id} onClick={() => fetchTechnologyById(1)}
-                unoptimized
-                src={t.image}
-                alt="Technology"
-                width={100}
-                height={100}
-                priority
-              />
-          )}
-        </div>    
-        <p className={styles.code}>Dúvidas, sugestões ou atualizações? <Link href="https://www.linkedin.com/in/acdayane/">Contate-nos!</Link></p>
-        <p className={styles.code}>Feito com ❤. Dayane Piccoli ©2023.</p>    
+          </div>          
+          <div>
+            <h2 className={font.className}>Qual tecnologia mais te atrai?</h2>
+              <p className={font.className}>Descubra onde aprender.</p>
+              <div style={{overflowX : 'auto',fontSize: '14px'}} className={styles.boxTechnology}>
+              {techList.map((t) => 
+              <div className={styles.pictureTechnology} key={t.id}>
+                  <Image  onClick={() => fetchTechnologyById(1)}
+                    unoptimized
+                    src={t.image}
+                    alt={t.name}
+                    layout="fill"
+                    objectFit="contain"
+                    priority
+                  />
+                  </div>
+              )}
+              </div>
+          </div>    
+          <div>
+            <p className={styles.code}>Dúvidas, sugestões ou atualizações? <Link href="https://www.linkedin.com/in/acdayane/">Contate-nos!</Link></p>
+            <p className={styles.code}>Feito com ❤. Dayane Piccoli ©2023.</p>  
+          </div>    
+          </div>   
       </main>
     </>
   )
