@@ -60,7 +60,7 @@ export default function Courses() {
                         <span>&nbsp; etc.</span>
                         <p>Carga horária: {c.durationInHours}h</p>
                         <p>Duração: {c.durationInMonths} meses</p>
-                        <p>R$: {c.minTuitionFee}-{c.maxTuitionFee} *</p>
+                        <p>R$: {c.minTuitionFee} - {c.maxTuitionFee} *</p>
                         <p>MSC: {c.msc === true? "Sim" : "Não"} **</p>
                         <FaSearchPlus/>
             

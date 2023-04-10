@@ -36,7 +36,6 @@
 .box {
   width: 100%;
   height: auto;
-  min-height: 30vh;
   justify-content: center;
   align-items: center;
   margin: 15px 0;
@@ -49,6 +48,13 @@
   position: fixed;
   top: 0px;
   left: 0px;
+}
+
+.picCarousel {
+  display: block;
+  width: var(--max-width);
+  max-width: 100vw;
+  height: 20rem;
 }
 
 .title {

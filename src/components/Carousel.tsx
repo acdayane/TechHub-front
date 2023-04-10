@@ -3,39 +3,41 @@ import Image from 'next/legacy/image'
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import Carousel from 'react-bootstrap/Carousel'
-import student from '../assets/student-unsplash.jpg'
+import photo1 from '../assets/photo1.jpg'
+import photo2 from '../assets/photo2.jpg'
 
 export default function CarouselImages() {
 
     return (
-        <div style={{display: "block", width: 1100, padding: 30}}>
+        <div className='d-block w-100'>
             <Carousel fade>
-                <Carousel.Item interval={5000}>                                      
+                <Carousel.Item interval={5000} className={styles.picCarousel}>                                      
                     <Image
                         className='d-block w-100'
+                        style={{opacity: "80%"}}
                         unoptimized
-                        src={student}
+                        src={photo1}
                         alt="student"
                         layout="fill"
+                        objectFit="cover"                       
                         priority
-                    />          
-                    {/* <img src={student} alt="student" className='d-block w-100'/> */}
+                    />        
                     <Carousel.Caption>
                         <h1>Encontre a melhor escola de programação para você</h1>
                         <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
                     </Carousel.Caption>             
                 </Carousel.Item>
-                <Carousel.Item interval={5000}>
+                <Carousel.Item interval={5000} className={styles.picCarousel}>
                     <Image
-                    className='d-block w-100'
+                        className='d-block w-100'
                         unoptimized
-                        src={student}
+                        src={photo2}
+                        style={{opacity: "80%"}}
                         alt="student"
                         layout="fill"
-                        objectFit="contain"
+                        objectFit="cover"    
                         priority
                     /> 
-                    {/* <img src={student} alt="student" className='d-block w-100'/> */}
                     <Carousel.Caption>
                         <h1>Encontre a melhor escola de programação para você</h1>
                         <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>

@@ -143,7 +143,12 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-a {
+a:link {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
   color: inherit;
   text-decoration: none;
 }
