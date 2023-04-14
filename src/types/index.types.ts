@@ -53,3 +53,13 @@ export type TypeCourse = {
     courseId?: Course[],
     technologyId?: Technology[]
 }
+
+export type CourseByTechnology = {
+    id: number, 
+    courseId: number,
+    technologyId: number,
+    Courses: Course,
+    Technologies: {
+        name: string
+    }
+}

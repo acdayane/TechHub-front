@@ -55,14 +55,14 @@ table {
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
-    /* #16abff33 0deg,
+    #16abff33 0deg,
     #0885ff33 55deg,
     #54d6ff33 120deg,
-    #0071ff33 160deg, */
-    #00FFC6 0deg,
+    #0071ff33 160deg,
+    /* #00FFC6 0deg,
     #30AADD 55deg,
     #43919B 120deg,
-    #247881 160deg,
+    #247881 160deg, */
     transparent 360deg
   );
   --secondary-glow: radial-gradient(
@@ -86,6 +86,41 @@ table {
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  min-height: 70vh;
+  width: 70vw;
+  max-width: var(--max-width);
+  margin-top: 135px;
+  margin-bottom: 40px;
+}
+.container h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.container p {
+  font-size: 1.11rem;
+  opacity: 0.8;
+  line-height: 1.5;
+  word-wrap: break-word;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -135,12 +170,6 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 a:link {

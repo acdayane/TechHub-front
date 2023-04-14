@@ -24,7 +24,7 @@ export default function CarouselImages() {
                     />        
                     <Carousel.Caption>
                         <h1>Encontre a melhor escola de programação para você</h1>
-                        <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
+                        <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar</p>
                     </Carousel.Caption>             
                 </Carousel.Item>
                 <Carousel.Item interval={5000} className={styles.picCarousel}>
@@ -40,7 +40,7 @@ export default function CarouselImages() {
                     /> 
                     <Carousel.Caption>
                         <h1>Encontre a melhor escola de programação para você</h1>
-                        <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar.</p>
+                        <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar</p>
                     </Carousel.Caption>
                 </Carousel.Item>               
           </Carousel>

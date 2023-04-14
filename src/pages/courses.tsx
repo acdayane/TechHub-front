@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/legacy/image'
 import { Comfortaa } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
@@ -7,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { getCourses, getCourseById } from './api/courses.api'
 import { Course } from '@/types/index.types'
 import { FaSearchPlus } from "react-icons/fa";
+import Info from '@/components/Info'
 
 const font = Comfortaa({ subsets: ['latin'] })
 
@@ -18,7 +18,6 @@ export default function Courses() {
         .then((res) => setCoursesList(res))
         .catch((err) => console.log(err))
     }, []);
-    console.log(coursesList)
 
     async function fetchCourseById(id: number) {
         getCourseById(id)
@@ -49,28 +48,28 @@ export default function Courses() {
                                 priority
                             /> 
                         </Link> 
-                        <h3>{c.Schools.name}</h3>                    
-                        <h2>{c.Names.name} <span>&#8594;</span></h2>
-                        <p>{c.Types.name}</p>
-                        <p>{c.description}</p>
-                        <span>Aprenda:</span>
+                        <h3 className={font.className}>{c.Schools.name}</h3>                    
+                        <h2 className={font.className}>{c.Names.name} <span>&#8594;</span></h2>
+                        <span className={font.className}>{c.Types.name}</span>
+                        <p className={font.className}>{c.description}</p>
+                        <span className={font.className}>Aprenda:</span>
                         {c.TechCourses.map((t) =>
-                            <span key={t.id}>&nbsp; {t.Technologies.name}, </span>
+                            <span className={font.className} key={t.id}>
+                                &nbsp; {t.Technologies.name},
+                            </span>
                         )}
-                        <span>&nbsp; etc.</span>
-                        <p>Carga horária: {c.durationInHours}h</p>
-                        <p>Duração: {c.durationInMonths} meses</p>
-                        <p>R$: {c.minTuitionFee} - {c.maxTuitionFee} *</p>
-                        <p>MSC: {c.msc === true? "Sim" : "Não"} **</p>
+                        <span className={font.className}>&nbsp; etc.</span>
+                        <p className={font.className}>Carga horária: {c.durationInHours}h</p>
+                        <p className={font.className}>Duração: {c.durationInMonths} meses</p>
+                        <p className={font.className}>R$: {c.minTuitionFee} - {c.maxTuitionFee} *</p>
+                        <p className={font.className}>MSC: {c.msc === true? "Sim" : "Não"} **</p>
                         <FaSearchPlus/>
             
                     </div>
-                )}         
-            <p className={styles.code}>* O menor valor corresponde ao valor do curso à vista mencionado no site da escola. O maior valor está sujeito a taxas de financiamento. Atente-se às condições contratuais.</p>        
-            <p className={styles.code}>** Modelo de Sucesso Compartilhado: O aluno só paga a partir de determinada renda mínima. Verifique regras, valores e acréscimos diretamente com a escola. </p>  
-            <p className={styles.code}>Informações coletadas em março de 2023.</p>  
-            </div>       
-
+                )}     
+               <Info/>
+            </div>  
+          
         </div>
         // <Link href='/courses/[id]' as={'/courses/' + value[0]}>
         //       <a>{value[1].title}</a>
