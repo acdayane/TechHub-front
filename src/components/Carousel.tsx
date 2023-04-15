@@ -11,7 +11,7 @@ export default function CarouselImages() {
     return (
         <div className='d-block w-100'>
             <Carousel fade>
-                <Carousel.Item interval={5000} className={styles.picCarousel}>                                      
+                <Carousel.Item interval={10000} className={styles.picCarousel}>                                      
                     <Image
                         className='d-block w-100'
                         style={{opacity: "80%"}}
@@ -23,11 +23,11 @@ export default function CarouselImages() {
                         priority
                     />        
                     <Carousel.Caption>
-                        <h1>Encontre a melhor escola de programação para você</h1>
+                        <h2>Encontre a melhor escola de programação para você</h2>
                         <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar</p>
                     </Carousel.Caption>             
                 </Carousel.Item>
-                <Carousel.Item interval={5000} className={styles.picCarousel}>
+                <Carousel.Item interval={10000} className={styles.picCarousel}>
                     <Image
                         className='d-block w-100'
                         unoptimized
@@ -39,7 +39,7 @@ export default function CarouselImages() {
                         priority
                     /> 
                     <Carousel.Caption>
-                        <h1>Encontre a melhor escola de programação para você</h1>
+                        <h2>Encontre a melhor escola de programação para você</h2>
                         <p>Informações sobre os principais bootcamps em Desenvolvimento Web Full Stack do Brasil em um só lugar</p>
                     </Carousel.Caption>
                 </Carousel.Item>               

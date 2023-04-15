@@ -1,5 +1,4 @@
 import styles from '@/styles/Home.module.css'
-import { Comfortaa } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/legacy/image'
@@ -7,8 +6,6 @@ import React, { useEffect, useState } from 'react'
 import { getTechnologies } from './api/technologies.api'
 import { Technology } from '@/types/index.types'
 import CarouselImages from '@/components/Carousel'
-
-const font = Comfortaa({ subsets: ['latin'] })
 
 export default function Home() {
   const [techList, setTechList] = useState<Technology[] | null>(null);
@@ -31,45 +28,30 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.container}>
-          <CarouselImages/>
-          <div className={styles.box}>
+          <CarouselImages/>        
             <div className={styles.grid}>
               <div className={styles.card}>
                   <Link href="/schools">
-                  <h2 className={font.className}>
-                    Escolas <span>&#8594;</span>
-                  </h2>
-                  <p className={font.className}>
-                    Encontre instituições que oferecem cursos de tecnologia.
-                  </p>
+                  <h2>Escolas <span>&#8594;</span></h2>
+                  <p>Encontre instituições que oferecem cursos de tecnologia.</p>
                 </Link>
               </div>
               <div className={styles.card}>
                 <Link href="/courses">
-                  <h2 className={font.className}>
-                    Cursos <span>&#8594;</span>
-                  </h2>
-                  <p className={font.className}>
-                    Veja detalhes e avaliações sobre os cursos.
-                  </p>
+                  <h2>Cursos <span>&#8594;</span></h2>
+                  <p>Veja detalhes e avaliações sobre os cursos.</p>
                 </Link>
               </div>
               <div className={styles.card}>
                 <Link href="/login">
-                  <h2 className={font.className}>
-                    Comunidade <span>&#8594;</span>
-                  </h2>
-                  <p className={font.className}>
-                    Interaja com outros estudantes de tecnologia.
-                  </p>
+                  <h2>Comunidade <span>&#8594;</span></h2>
+                  <p>Interaja com outros estudantes de tecnologia.</p>
                 </Link>
               </div>
-            </div>
-          </div>          
-          <div>
-            <h2 className={font.className}>Qual tecnologia mais te atrai?</h2>
-              <p className={font.className}>Descubra onde aprender.</p>
-              <div className={styles.boxTechnology}>
+            </div>            
+            <h2>Qual tecnologia mais te atrai?</h2>
+            <p>Descubra onde aprender.</p>
+            <div className={styles.boxTechnology}>
               {techList.map((t) => 
                 <div key={t.id} className={styles.pictureTechnology}>
                   <Link href={`/technologies/${t.id}`}>
@@ -84,9 +66,8 @@ export default function Home() {
                   </Link>
                 </div>
               )}
-              </div>
-          </div>       
-          </div>   
+            </div>
+          </div>        
       </main>
     </>
   )
