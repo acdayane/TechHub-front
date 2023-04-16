@@ -6,6 +6,6 @@ export async function getCourses() {
 }
 
 export async function getCourseById(id: number) {
-    const result = await axios.get(`${process.env.API_URL}/courses/1`);
+    const result = await axios.get(`${process.env.API_URL}/courses/${id}`);
     return result.data;
 }

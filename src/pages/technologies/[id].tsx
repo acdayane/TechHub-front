@@ -62,16 +62,16 @@ export default function Technologies() {
                 <div className={styles.boxTechnology}>
                     {techList.map((t) => 
                         <div key={t.id} className={styles.pictureTechnology}>
-                        <Link href={`/technologies/${t.id}`}>
-                            <Image
-                            unoptimized
-                            src={t.image}
-                            alt={t.name}
-                            layout="fill"
-                            objectFit="contain"
-                            priority
-                            />
-                        </Link>
+                            <Link href={`/technologies/${t.id}`}>
+                                <Image
+                                unoptimized
+                                src={t.image}
+                                alt={t.name}
+                                layout="fill"
+                                objectFit="contain"
+                                priority
+                                />
+                            </Link>
                         </div>
                     )}
                 </div>
