@@ -3,7 +3,9 @@ import styles from '@/styles/Home.module.css'
 import { useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
-import { signUp, signIn } from './api/auth.api'
+import { signUp, signIn } from './api/community.api'
+import { useGlobalContext } from '../contexts/globalContext'
+import { useRouter } from 'next/router'
 
 export default function Login() {
     const [registredUser, setRegistredUser] = useState(true);
@@ -12,26 +14,31 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [disabled, setDisabled] = useState(false);
+    const { token, setToken } = useGlobalContext();
+    const router = useRouter();
   
-    function handleSignIn(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleSignIn(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
         setDisabled(true);
     
         signIn(email, password)
         .then((res) => {
-            console.log(res) //navigate
-            localStorage.setItem("techHUB", JSON.stringify(res.data));
+            setToken(res);
+            if (typeof window !== "undefined") {
+                localStorage.setItem("token", JSON.stringify(res))
+            };
+            router.push('/community');
         })
         .catch((err) => {
-            console.log(err.message)
-            setDisabled(false)
+            console.log(err.message);
+            setDisabled(false);
             toast('Ops... algo deu errado =[');
         })
     }
 
-    function handleSignUp(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleSignUp(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
-
+console.log(password, confirmPassword)
         if (password !== confirmPassword) {
             toast('A senha e sua confirmação devem ser iguais');
             setPassword("");
@@ -49,6 +56,7 @@ export default function Login() {
         .catch((err) => {
             console.log(err.message);
             setDisabled(false);
+            alert('deu ruim')
             toast('Ops... algo deu errado =[');
         })
     }
