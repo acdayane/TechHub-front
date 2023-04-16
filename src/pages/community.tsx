@@ -11,7 +11,7 @@ export default function Community() {
         <div className={styles.main}> 
         
                 <div className={styles.containerLeft}>                
-                    <h1>Batatas da comunidade</h1>                 
+                    <h1>Comunidade</h1>                 
                 </div>
                                                      
         </div>
