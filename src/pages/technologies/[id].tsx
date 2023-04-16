@@ -4,7 +4,7 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { CourseByTechnology, Technology } from '@/types/index.types'
-import { FaSearchPlus } from "react-icons/fa";
+import { MdExpandMore } from "react-icons/md";
 import Info from '@/components/Info'
 import { getTechnologies, getTechnologyById } from '../api/technologies.api'
 
@@ -50,12 +50,19 @@ export default function Technologies() {
                         <h3>{c.Courses.Schools.name}</h3>                    
                         <h2>{c.Courses.Names.name}</h2>
                         <h4>{c.Courses.Types.name}</h4>
+                        <span>Aprenda:</span>
+                            {c.Courses.TechCourses.map((t, index) => 
+                                <span key={index}>
+                                    &nbsp;{t.Technologies.name},
+                                </span>
+                            )}
+                        <span>&nbsp; etc.</span>
                         <p>{c.Courses.description}</p>
                         <p>Carga horária: {c.Courses.durationInHours}h</p>
                         <p>Duração: {c.Courses.durationInMonths} meses</p>
-                        <p>R$: {c.Courses.minTuitionFee} - {c.Courses.maxTuitionFee} *</p>
+                        <p>R$: {c.Courses.minTuitionFee.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2 })} - {c.Courses.maxTuitionFee.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2 })} *</p>
                         <p>MSC: {c.Courses.msc === true? "Sim" : "Não"} **</p>
-                        <FaSearchPlus/>
+                        <MdExpandMore/>
                     </div>
                 )}  
                 <h1>Pesquise outra tecnologia:</h1>

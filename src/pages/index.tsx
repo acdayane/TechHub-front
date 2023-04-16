@@ -11,10 +11,10 @@ export default function Home() {
   const [techList, setTechList] = useState<Technology[] | null>(null);
   const { token, setToken } = useGlobalContext();
 
-  // if (typeof window !== "undefined") {
-  //   const item = localStorage.getItem("token");
-  //   setToken(item);
-  // };
+  if (typeof window !== "undefined") {
+    const item = localStorage.getItem("token");
+    setToken(item);
+  };
   
   useEffect(() => {
     getTechnologies()

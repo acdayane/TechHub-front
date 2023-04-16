@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { getCourses } from './api/courses.api'
 import { Course } from '@/types/index.types'
-import { FaSearchPlus } from "react-icons/fa";
+import { MdExpandMore } from "react-icons/md";
 import Info from '@/components/Info'
 
 export default function Courses() {
@@ -48,9 +48,11 @@ export default function Courses() {
                         <p>{c.description}</p>
                         <p>Carga horária: {c.durationInHours}h</p>
                         <p>Duração: {c.durationInMonths} meses</p>
-                        <p>R$: {c.minTuitionFee} - {c.maxTuitionFee} *</p>
+                        <p>
+                            R$: {c.minTuitionFee.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2 })} - {c.maxTuitionFee.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2 })} *
+                        </p>
                         <p>MSC: {c.msc === true? "Sim" : "Não"} **</p>                    
-                        <FaSearchPlus/>            
+                        <MdExpandMore className={styles.icon}/>            
                     </div>
                 )}    
                <Info/>

@@ -2,10 +2,11 @@ import redirectToGitHub from "@/components/Auth";
 import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
-import { toast } from "react-toastify";
 import { signUp, signIn } from "./api/community.api";
 import { useGlobalContext } from "../contexts/globalContext";
 import { useRouter } from "next/router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
   const [registeredUser, setRegisteredUser] = useState(true);
@@ -14,7 +15,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
-  const { token, setToken } = useGlobalContext();
+  const { setToken } = useGlobalContext();
   const router = useRouter();
 
   function handleSignIn(e: React.ChangeEvent<HTMLFormElement>) {
@@ -78,14 +79,14 @@ export default function Login() {
               <input
                 disabled={disabled}
                 type="email"
-                placeholder="e-mail"
+                placeholder="E-mail"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <input
                 disabled={disabled}
                 type="password"
-                placeholder="senha"
+                placeholder="Senha"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
@@ -97,7 +98,7 @@ export default function Login() {
                 disabled={true}
                 onClick={redirectToGitHub}
               >
-                Logar com GitHub
+                Logar com GitHub (em breve)
               </button>
               <button
                 disabled={disabled}
@@ -115,28 +116,28 @@ export default function Login() {
               <input
                 disabled={disabled}
                 type="username"
-                placeholder="nome"
+                placeholder="Nome"
                 onChange={(e) => setUserName(e.target.value)}
                 required
               />
               <input
                 disabled={disabled}
                 type="email"
-                placeholder="e-mail"
+                placeholder="E-mail"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <input
                 disabled={disabled}
                 type="password"
-                placeholder="senha"
+                placeholder="Senha"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <input
                 disabled={disabled}
                 type="password"
-                placeholder="confirmação de senha"
+                placeholder="Confirmação de senha"
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />

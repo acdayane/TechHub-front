@@ -91,11 +91,29 @@
   top: 0px;
   left: 0px;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .header img {
   margin-left: 2rem;
-  cursor: pointer;
 }
+.header span {
+  color:#3e3e46;
+  margin-right: 8px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+}
+
+.icon {
+  font-size: 30px;
+  color: #3e3e46;
+} 
 
 .footer {
   width: 100vw;
@@ -228,10 +246,17 @@
     background: rgba(var(--card-rgb), 0.1);
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
   }
-}
-
-.login {
-  background-color: orange;
+  .header img:hover {
+    cursor: pointer;
+  }
+  .header span:hover {
+    color: #4ccca4;
+    cursor: pointer;
+  }
+  .icon:hover {
+    color: #4ccca4;
+    cursor: pointer;
+  }
 }
 
 /* Mobile */
@@ -288,11 +313,11 @@
     padding: 12px;
   }
   .header {
-    display: flex;
     justify-content: center;
+    margin-left: 0;
   }
-  .header img {
-    margin: 0;
+  .menu {
+    display: none;
   }
 }
 
