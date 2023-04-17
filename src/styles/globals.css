@@ -88,41 +88,6 @@ table {
   --card-border-rgb: 131, 134, 135;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  width: 100vw;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  min-height: 70vh;
-  width: 70vw;
-  max-width: var(--max-width);
-  margin-top: 135px;
-  margin-bottom: 40px;
-}
-.container h1 {
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-.container h2 {
-  font-size: 2rem;
-  font-weight: 600;
-}
-.container p {
-  font-size: 1.11rem;
-  opacity: 0.8;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

@@ -12,14 +12,14 @@ export default function Header() {
   function logout() {
     console.log('oi')
    
-    if (typeof window !== "undefined") {
-        console.log("oi")
-        localStorage.removeItem("token");
-        //setToken(null);
-        alert("Até breve!");
-    } else {
-      alert ("Você não está logado");
-    }
+    // if (typeof window !== "undefined") {
+    //     console.log("oi")
+    //     localStorage.removeItem("token");
+    //     //setToken(null);
+    //     alert("Até breve!");
+    // } else {
+    //   alert ("Você não está logado");
+    // }
 
   }
 
@@ -31,7 +31,7 @@ export default function Header() {
       < div className={styles.menu}>
         <Link href={"/schools"}><span>Escolas</span></Link>
         <Link href={"/courses"}><span>Cursos</span></Link>
-        <Link href={"/community"}><span>Comunidade</span></Link>
+        <Link href={token!==null?"/community":"/login"}><span>Comunidade</span></Link>
         <Link href={"/technologies/2"}><span>Tecnologias</span></Link>       
         <MdOutlineLogout className={styles.icon} onClick={logout}/>      
       </div>

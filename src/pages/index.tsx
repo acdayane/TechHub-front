@@ -42,7 +42,7 @@ export default function Home() {
             </Link>
           </div>
           <div className={styles.card}>
-            <Link href={token?"/community":"/login"}>
+            <Link href={token!==null?"/community":"/login"}>
               <h2>Comunidade <span>&#8594;</span></h2>
               <p>Interaja com outros estudantes de tecnologia.</p>
             </Link>

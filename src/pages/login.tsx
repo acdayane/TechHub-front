@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AiFillGithub } from "react-icons/ai";
+import Image from "next/legacy/image";
+import photo4 from "../assets/photo4.jpg";
 
 export default function Login() {
   const [registeredUser, setRegisteredUser] = useState(true);
@@ -35,7 +37,7 @@ export default function Login() {
       .catch((err) => {
         console.log(err.message);
         setDisabled(false);
-        toast("Ops... algo deu errado =[");
+        alert("Ops... algo deu errado =[");
       });
 
     setDisabled(false);
@@ -46,7 +48,7 @@ export default function Login() {
     if (password !== confirmPassword) {
       alert("A senha e sua confirmação devem ser iguais");
       setPassword(" ");
-      setConfirmPassword(" ");
+      setConfirmPassword("");
     } else {
       handleSignUp(e);
     }
@@ -73,6 +75,15 @@ export default function Login() {
 
   return (
     <main className={styles.main}>
+      <Image
+        style={{ opacity: "20%" }}
+        unoptimized
+        src={photo4}
+        alt="students"
+        layout="fill"
+        objectFit="cover"
+        priority
+      />
       <div className={styles.container}>
         {registeredUser === true && (
           <>
@@ -96,12 +107,12 @@ export default function Login() {
                 Enviar
               </button>
               <button
-                style={{"display": "flex", "justifyContent": "center", "alignItems": "center"}}
+                style={{display: "flex", justifyContent: "center", alignItems: "center"}}
                 className="login"
                 disabled={true}
                 onClick={redirectToGitHub}
               >
-              <AiFillGithub className={styles.iconGithub}/>
+              <AiFillGithub className={styles.iconLogo}/>
                 Autenticar com GitHub (em breve)
               </button>
               <button
@@ -135,6 +146,7 @@ export default function Login() {
                 disabled={disabled}
                 type="password"
                 placeholder="Senha"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
@@ -142,6 +154,7 @@ export default function Login() {
                 disabled={disabled}
                 type="password"
                 placeholder="Confirmação de senha"
+                value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
