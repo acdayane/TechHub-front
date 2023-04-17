@@ -2,11 +2,12 @@ import redirectToGitHub from "@/components/Auth";
 import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
-import { signUp, signIn } from "./api/community.api";
+import { signUp, signIn } from "./api/users.api";
 import { useGlobalContext } from "../contexts/globalContext";
 import { useRouter } from "next/router";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AiFillGithub } from "react-icons/ai";
 
 export default function Login() {
   const [registeredUser, setRegisteredUser] = useState(true);
@@ -15,7 +16,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
-  const { setToken } = useGlobalContext();
+  const { setToken, setUser } = useGlobalContext();
   const router = useRouter();
 
   function handleSignIn(e: React.ChangeEvent<HTMLFormElement>) {
@@ -24,9 +25,10 @@ export default function Login() {
 
     signIn(email, password)
       .then((res) => {
-        setToken(res);
+        setToken(res.token);
+        setUser(res);
         if (typeof window !== "undefined") {
-          localStorage.setItem("token", JSON.stringify(res));
+          localStorage.setItem("token", JSON.stringify(res.token));
         }
         router.push("/community");
       })
@@ -66,7 +68,7 @@ export default function Login() {
         toast("Ops... algo deu errado =[");
       });
 
-      setDisabled(false);
+    setDisabled(false);
   }
 
   return (
@@ -94,11 +96,13 @@ export default function Login() {
                 Enviar
               </button>
               <button
+                style={{"display": "flex", "justifyContent": "center", "alignItems": "center"}}
                 className="login"
                 disabled={true}
                 onClick={redirectToGitHub}
               >
-                Logar com GitHub (em breve)
+              <AiFillGithub className={styles.iconGithub}/>
+                Autenticar com GitHub (em breve)
               </button>
               <button
                 disabled={disabled}
@@ -141,8 +145,12 @@ export default function Login() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
-              <button type="submit" disabled={disabled}>Enviar</button>
-              <button onClick={()=>setRegisteredUser(true)}>Já se cadastrou?</button>
+              <button type="submit" disabled={disabled}>
+                Enviar
+              </button>
+              <button onClick={() => setRegisteredUser(true)}>
+                Já se cadastrou?
+              </button>
             </Form>
           </>
         )}

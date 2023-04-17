@@ -14,7 +14,7 @@ export default function CarouselImages() {
                 <Carousel.Item interval={10000} className={styles.picCarousel}>                                      
                     <Image
                         className='d-block w-100'
-                        style={{opacity: "80%"}}
+                        style={{opacity: "30%"}}
                         unoptimized
                         src={photo1}
                         alt="student"
@@ -32,7 +32,7 @@ export default function CarouselImages() {
                         className='d-block w-100'
                         unoptimized
                         src={photo2}
-                        style={{opacity: "80%"}}
+                        style={{opacity: "30%"}}
                         alt="student"
                         layout="fill"
                         objectFit="cover"    

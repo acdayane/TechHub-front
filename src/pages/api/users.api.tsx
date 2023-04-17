@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { JsonObjectExpression } from 'typescript';
 
 export async function getToken() {
     const result = await axios.post(`${process.env.API_URL}/sign-in`);

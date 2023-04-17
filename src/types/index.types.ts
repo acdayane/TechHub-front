@@ -63,3 +63,15 @@ export type CourseByTechnology = {
         name: string
     }
 }
+
+export type UserData = {
+    name: string,
+    userId: number,
+    token: string
+}
+
+export type Comment = {
+    content: string,
+    token: string,
+    courseId: number,
+}

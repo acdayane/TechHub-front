@@ -23,10 +23,6 @@ export default function Header() {
 
   }
 
-  function teste(){
-    alert("teste")
-  }
-
   return (
     <div className={styles.header}>
       <Link href="/">

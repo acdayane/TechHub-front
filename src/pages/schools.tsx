@@ -1,12 +1,12 @@
 import styles from '@/styles/Home.module.css'
-import { School } from '@/types/index.types'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { getSchools } from "./api/schools.api"
 import Image from 'next/legacy/image'
+import { useGlobalContext } from '@/contexts/globalContext'
 
 export default function Schools() {
-    const [schoolsList, setSchoolsList] = useState<School[] | null>(null);
+    const { schoolsList, setSchoolsList } = useGlobalContext();
 
     useEffect(() => {
         getSchools()
