@@ -9,6 +9,7 @@ import Info from "@/components/Info";
 
 export default function Courses() {
   const [coursesList, setCoursesList] = useState<Course[] | null>(null);
+  const [courseSelected, setCourseSelected] = useState(0);
 
   useEffect(() => {
     getCourses()
@@ -70,7 +71,25 @@ export default function Courses() {
               *
             </p>
             <p>MSC: {c.msc === true ? "Sim" : "Não"} **</p>
-            <MdExpandMore className={styles.icon} />
+            <MdExpandMore
+              className={styles.icon}
+              onClick={() => setCourseSelected(c.id)}
+            />
+            <div
+              className={styles.contentComments}
+              style={{
+                display: c.id === courseSelected ? "flex" : "none",
+              }}
+            >
+              {c.Comments?.map((cm, index) => (
+                <div key={index} className={styles.contentComment}>
+                  <span>
+                    <strong>{cm.Users.name}:&nbsp;</strong>
+                  </span>
+                  <span>{cm.content}</span>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
         <Info />

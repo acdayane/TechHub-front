@@ -1,5 +1,3 @@
-import { type } from "os"
-
 export type Technology = {
     id: number,
     name: string,
@@ -25,7 +23,8 @@ export type Course = {
     Schools: School,
     Names: Name,
     Types: Type,
-    TechCourses: Technology[]
+    TechCourses: Technology[],
+    Comments: Comment[]
 }
 
 export type School = {
@@ -61,7 +60,7 @@ export type CourseByTechnology = {
     Courses: Course,
     Technologies: {
         name: string
-    }
+    },
 }
 
 export type UserData = {
@@ -74,4 +73,7 @@ export type Comment = {
     content: string,
     token: string,
     courseId: number,
+    Users: {
+        name: string
+    },
 }

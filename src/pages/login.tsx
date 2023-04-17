@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AiFillGithub } from "react-icons/ai";
 import Image from "next/legacy/image";
 import photo4 from "../assets/photo4.jpg";
+import Header from "@/components/Header";
 
 export default function Login() {
   const [registeredUser, setRegisteredUser] = useState(true);
@@ -29,8 +30,9 @@ export default function Login() {
       .then((res) => {
         setToken(res.token);
         setUser(res);
+        console.log(res)
         if (typeof window !== "undefined") {
-          localStorage.setItem("token", JSON.stringify(res.token));
+          localStorage.setItem("token", res.token);
         }
         router.push("/community");
       })
@@ -75,6 +77,7 @@ export default function Login() {
 
   return (
     <main className={styles.main}>
+      <Header/>
       <Image
         style={{ opacity: "20%" }}
         unoptimized

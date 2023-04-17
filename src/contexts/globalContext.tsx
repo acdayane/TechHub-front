@@ -1,5 +1,5 @@
 import { School, UserData } from "@/types/index.types";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 interface IGlobalContextProps {
   token: string | null;
@@ -23,6 +23,16 @@ export const GlobalContextProvider = (props: any) => {
   const [currentToken, setCurrentToken] = useState<string | null>(null);
   const [schools, setSchools] = useState<School[] | null>(null);
   const [userData, setUserData] = useState<UserData | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && (!userData || !currentToken)) {
+      const item = localStorage.getItem("token");
+      setCurrentToken(item);
+      const data = localStorage.getItem("userData");
+      if (data) 
+      setUserData(JSON.parse(data));
+    };
+  }, []);
 
   return (
     <GlobalContext.Provider

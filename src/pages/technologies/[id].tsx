@@ -7,25 +7,28 @@ import { CourseByTechnology, Technology } from "@/types/index.types";
 import { MdExpandMore } from "react-icons/md";
 import Info from "@/components/Info";
 import { getTechnologies, getTechnologyById } from "../api/technologies.api";
+import Header from "@/components/Header";
 
 export default function Technologies() {
   const router = useRouter();
   const id = router.query.id;
   const [coursesByTechnology, setCoursesByTechnology] = useState<CourseByTechnology[] | null>(null);
   const [techList, setTechList] = useState<Technology[] | null>(null);
+  const [courseSelected, setCourseSelected] = useState(0);
 
   useEffect(() => {
     getTechnologyById(Number(id))
       .then((res) => setCoursesByTechnology(res))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
   }, [id]);
 
   useEffect(() => {
     getTechnologies()
       .then((res) => setTechList(res))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
   }, []);
 
+console.log(coursesByTechnology);
   if (coursesByTechnology === null || techList === null) {
     return (
       <div className={styles.container}>
@@ -36,6 +39,7 @@ export default function Technologies() {
 
   return (
     <div className={styles.main}>
+      <Header />
       <div className={styles.containerLeft}>
         <h1>Onde aprender {coursesByTechnology[0].Technologies.name}?</h1>
         {coursesByTechnology.map((c) => (
@@ -80,7 +84,23 @@ export default function Technologies() {
               *
             </p>
             <p>MSC: {c.Courses.msc === true ? "Sim" : "Não"} **</p>
-            <MdExpandMore />
+            <MdExpandMore
+              className={styles.icon}
+              onClick={() => setCourseSelected(c.Courses.id)}
+            />
+            <div
+              className={styles.contentComments}
+              style={{
+                display: c.courseId === courseSelected ? "flex" : "none",
+              }}
+            >
+              {c.Courses.Comments?.map((cl, index) => (
+                <div key={index} className={styles.contentComment}>
+                  <span><strong>{cl.Users.name}:&nbsp;</strong></span>
+                  <span>{cl.content}</span>
+                </div>                
+              ))}
+            </div>
           </div>
         ))}
         <h1>Pesquise outra tecnologia:</h1>

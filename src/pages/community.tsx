@@ -11,6 +11,7 @@ import photo3 from "../assets/photo3.jpg";
 import { postComment } from "./api/comments.api";
 import { getCourses } from "./api/courses.api";
 import { RxDiscordLogo } from "react-icons/rx";
+import Header from "@/components/Header";
 
 export default function Community() {
   const [comment, setComment] = useState("");
@@ -63,6 +64,7 @@ export default function Community() {
 
   return (
     <main className={styles.main}>
+      <Header/>
       <Image
         style={{ opacity: "20%" }}
         unoptimized
@@ -89,11 +91,11 @@ export default function Community() {
                   unoptimized
                   src={s.Schools.image}
                   alt="Course"
-                  width={50}
-                  height={50}
+                  width={40}
+                  height={40}
                   priority
                 />
-                <p>{s.Names.name}</p>
+                <p>&nbsp;{s.Names.name}</p>
               </div>
             ))}
           </div>

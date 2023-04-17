@@ -6,15 +6,11 @@ import { getTechnologies } from './api/technologies.api'
 import { Technology } from '@/types/index.types'
 import CarouselImages from '@/components/Carousel'
 import { useGlobalContext } from '@/contexts/globalContext'
+import Header from '@/components/Header'
 
 export default function Home() {
   const [techList, setTechList] = useState<Technology[] | null>(null);
-  const { token, setToken } = useGlobalContext();
-
-  if (typeof window !== "undefined") {
-    const item = localStorage.getItem("token");
-    setToken(item);
-  };
+  const { token } = useGlobalContext();
   
   useEffect(() => {
     getTechnologies()
@@ -26,6 +22,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <Header/>
       <div className={styles.container}>
         <CarouselImages/>        
         <div className={styles.grid}>
@@ -42,7 +39,7 @@ export default function Home() {
             </Link>
           </div>
           <div className={styles.card}>
-            <Link href={token!==null?"/community":"/login"}>
+            <Link href={token !== null ? "/community" : "/login"}>
               <h2>Comunidade <span>&#8594;</span></h2>
               <p>Interaja com outros estudantes de tecnologia.</p>
             </Link>
